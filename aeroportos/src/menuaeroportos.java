@@ -24,7 +24,7 @@ public class menuaeroportos {
         //Coleta dos dados do banco de dados
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cadastro",
-                    "root", "felipeds18");
+                    "root", "123456");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from aeroportos");
 
@@ -81,7 +81,7 @@ public class menuaeroportos {
         dpq.dijkstra(adj, src);
 
         int idans = 0;
-        for(int i=0; i<40; i++){
+        for(int i=0; i<V; i++){
             double a = calcDist.distance(lista.get(src).latitude, lista.get(src).longitude, lista.get(i).latitude,
                     lista.get(i).longitude);
             double b = calcDist.distance(lista.get(i).latitude, lista.get(i).longitude, lista.get(dest).latitude,
@@ -92,7 +92,7 @@ public class menuaeroportos {
         }
 
         //Salvando a consulta no banco de dados
-        for(int i=0; i<40; i++){
+        for(int i=0; i<V; i++){
             if(idans == lista.get(i).id){
                 String caminho = origem + '-' + lista.get(i).sigla + '-' + destino;
                 System.out.println(origem + '-' + lista.get(i).sigla + '-' + destino);
